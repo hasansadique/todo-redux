@@ -14,25 +14,25 @@ export const operationsReducer = (state = initialState, action) => {
             return removeTodos
         case UPDATE_TODO:
             let data = action.payload;
-            const updateArray = []
-            state.map((item) => {
+            // const updateArray = []
+            const newTodos = state.map((item) => {
                 if (item.id === data.id) {
                     item.todo = data.todo;
                     item.isCompleted = data.isCompleted;
                 }
-                updateArray.push(item)
+                return item
             })
-            return updateArray
+            return newTodos
 
         case UPDATE_CHECKBOX:
-            let todoArray = [];
-            state.map((item) => {
+            // let todoArray = [];
+            const newCheckbox = state.map((item) => {
                 if (item.id === action.payload) {
                     item.isCompleted = !item.isCompleted;
                 }
-                todoArray.push(item)
+                return item
             })
-            return todoArray;
+            return newCheckbox;
         default: return state
     }
 }
